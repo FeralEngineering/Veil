@@ -70,7 +70,5 @@ Veil/
 │   ├── HARDWARE.md
 │   ├── WIRING.md
 │   ├── SOFTWARE.md
-│   ├── PHILOSOPHY.md
-│   └── BUILD_LOG.md
 └── images/
 ```
