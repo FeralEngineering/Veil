@@ -2,7 +2,6 @@
 
 ![Veil live](images/veil-live.jpg)
 
-## Hardware
 
 | | |
 |---|---|
