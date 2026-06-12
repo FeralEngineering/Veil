@@ -1,10 +1,12 @@
 # Software
 
-Veil runs on an ESP32-CAM and handles capture, processing, storage, and local archive hosting.
+Veil runs on an ESP32-CAM and handles image capture, processing, storage, and local archive hosting.
 
-The firmware is built around a simple flow:
+The firmware follows this flow:
 
-capture → alter → save → serve
+```text
+capture → process → save → serve
+```
 
 ---
 
@@ -17,39 +19,39 @@ RGB565
 320x240 (QVGA)
 ```
 
-QVGA was chosen for stability.
+QVGA is used for memory stability.
 
-Higher resolutions caused memory fragmentation and unreliable behavior.
+Higher resolutions caused memory fragmentation and inconsistent capture behavior during testing.
 
-After capture, the image is converted to RGB888 for processing.
+Captured frames are converted to RGB888 before processing.
 
 ---
 
 ## Processing Pipeline
 
-Each image passes through the following stages:
+Each image passes through a fixed sequence of processing stages:
 
-1. Smooth Warp  
-2. Rift Shear  
-3. Portal Swirl  
-4. Veil Drift  
-5. Glow Extraction  
-6. Pink/Fog Grade  
-7. Depth Lie  
-8. Shadow Emission  
-9. Chromatic Split  
-10. Vignette  
-11. Soft Blur  
+1. Warp distortion  
+2. Shear transform  
+3. Swirl transform  
+4. Drift displacement  
+5. Glow extraction  
+6. Color grading  
+7. Contrast compression  
+8. Shadow boosting  
+9. Chromatic channel offset  
+10. Vignette falloff  
+11. Blur blending  
 
-Each pass modifies the image before it is written to storage.
+Each stage modifies the active framebuffer before the final JPEG is written.
 
-The original frame is discarded.
+The original frame is not retained.
 
 ---
 
 ## Storage
 
-Images are saved to the onboard microSD card.
+Processed images are written to the onboard microSD card.
 
 Naming format:
 
@@ -57,7 +59,7 @@ Naming format:
 veil_00000001.jpg
 ```
 
-File numbering is stored in NVS (`Preferences`) so numbering continues after reboot.
+File numbering is stored in ESP32 NVS using `Preferences`, allowing numbering to continue across reboots.
 
 ---
 
@@ -70,7 +72,7 @@ SSID: VeilCam
 PASS: veilveilveil
 ```
 
-Runs a local web server on:
+Runs a local web server at:
 
 ```text
 http://192.168.4.1
@@ -80,28 +82,28 @@ Routes:
 
 | Route | Function |
 |---|---|
-| `/` | Main UI |
+| `/` | Main interface |
 | `/status` | Device status |
-| `/capture` | Queue capture |
-| `/list` | List saved images |
-| `/img` | Serve saved image |
+| `/capture` | Trigger capture |
+| `/list` | List stored images |
+| `/img` | Serve image files |
 
 ---
 
 ## Button Logic
 
-GPIO13 is monitored in the main loop.
+GPIO13 is polled in the main loop.
 
-Pressing it queues a capture request.
+A button press sets a capture request flag.
 
-Captures are processed in a separate FreeRTOS task to keep the web interface responsive.
+Capture and processing are handled in a separate FreeRTOS task to keep the web interface responsive.
 
 ---
 
 ## LED Logic
 
-GPIO4 is left high-impedance during capture.
+GPIO4 shares the onboard flash LED circuit.
 
-After successful save, it pulses briefly.
+During capture it remains high-impedance to avoid camera bus conflicts.
 
-This avoids conflicts with the camera flash circuit.
+After a successful save, the LED pulses briefly as a status indicator.
