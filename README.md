@@ -4,11 +4,13 @@
   <img src="images/veil-live.jpg" width="700">
 </p>
 
-<p align="center">
-  <img src="images/veil-idle.jpg" width="250">
-  <img src="images/veil-back.jpg" width="250">
-  <img src="images/veil-side.jpg" width="250">
-</p>
+<table align="center">
+<tr>
+<td align="center"><img src="images/veil-idle.jpg" width="250"></td>
+<td align="center"><img src="images/veil-back.jpg" width="250"></td>
+<td align="center"><img src="images/veil-side.jpg" width="250"></td>
+</tr>
+</table>
 
 Veil is a handheld ESP32-CAM image capture device.
 
