@@ -53,17 +53,9 @@ From there you can trigger new captures and browse old ones.
 - microSD storage  
 - momentary trigger button  
 - status LED  
-- repurposed disposable vape shell enclosure  
+- repurposed disposable vape box enclosure  
 
 More detailed hardware and wiring docs are in `/docs`.
-
----
-
-## Project history
-
-This started as **Scry**, then became **SCRY//OBSCURA**, and eventually landed on **Veil**.
-
-The project stayed basically the same the whole time. The name just got better.
 
 ---
 
