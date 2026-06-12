@@ -1,5 +1,9 @@
 # Veil
 
+![License](https://img.shields.io/badge/license-MIT-black)
+
+![Status](https://img.shields.io/badge/status-active-green)
+
 <p align="center">
   <img src="images/veil-live.jpg" width="700">
 </p>
