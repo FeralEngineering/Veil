@@ -87,6 +87,6 @@ Veil/
 ├── docs/
 │   ├── HARDWARE.md
 │   ├── WIRING.md
-│   ├── SOFTWARE.md
+│   └── SOFTWARE.md
 └── images/
 ```
