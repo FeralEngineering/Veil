@@ -117,3 +117,9 @@ Veil/
 ## License
 
 MIT
+
+---
+
+Built under Feral Engineering.
+
+![Feral Engineering Mark](images/feral-mark.png)
