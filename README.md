@@ -36,11 +36,18 @@ Each capture applies these effects using randomized parameters and entropy from 
 
 ## Sample Captures
 
-| | |
-|---|---|
-| ![](images/sample-01.JPG) | ![](images/sample-02.JPG) |
-| ![](images/sample-03.JPG) | ![](images/sample-04.JPG) |
-| ![](images/sample-05.JPG) | ![](images/sample-06.JPG) |
+<table align="center">
+<tr>
+<td><img src="images/sample-01.JPG" width="250"></td>
+<td><img src="images/sample-02.JPG" width="250"></td>
+<td><img src="images/sample-03.JPG" width="250"></td>
+</tr>
+<tr>
+<td><img src="images/sample-04.JPG" width="250"></td>
+<td><img src="images/sample-05.JPG" width="250"></td>
+<td><img src="images/sample-06.JPG" width="250"></td>
+</tr>
+</table>
 
 ---
 
