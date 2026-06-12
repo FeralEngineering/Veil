@@ -2,6 +2,13 @@
 
 ![Veil live](images/veil-live.jpg)
 
+## Hardware
+
+| | |
+|---|---|
+| ![](images/veil-idle.jpg) | ![](images/veil-back.jpg) |
+| ![](images/veil-side.jpg) |  |
+
 Veil is a handheld ESP32-CAM built around an idea I’ve had for a long time:
 
 what if a camera could catch things moving between dimensions?
