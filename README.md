@@ -1,5 +1,7 @@
 # Veil
 
+![Veil live](images/veil-live.jpg)
+
 Veil is a handheld ESP32-CAM built around an idea I’ve had for a long time:
 
 what if a camera could catch things moving between dimensions?
