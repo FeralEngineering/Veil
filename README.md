@@ -30,6 +30,16 @@ Either way, that’s the experiment.
 
 ---
 
+## Sample Captures
+
+| | |
+|---|---|
+| ![](images/sample-01.JPG) | ![](images/sample-02.JPG) |
+| ![](images/sample-03.JPG) | ![](images/sample-04.JPG) |
+| ![](images/sample-05.JPG) | ![](images/sample-06.JPG) |
+
+---
+
 ## Using it
 
 Press the button.
