@@ -2,31 +2,32 @@
 
 ![Veil live](images/veil-live.jpg)
 
-
 | | |
 |---|---|
 | ![](images/veil-idle.jpg) | ![](images/veil-back.jpg) |
 | ![](images/veil-side.jpg) |  |
 
-Veil is a handheld ESP32-CAM built around an idea I’ve had for a long time:
+Veil is a handheld ESP32-CAM image capture device.
 
-what if a camera could catch things moving between dimensions?
+It captures an image, processes it immediately, and saves only the processed result to microSD.
 
-Not in a paranormal ghost-hunting way. More like interference. Overlap. Things crossing through each other for a second and leaving traces.
+The original unprocessed image is discarded.
 
-That was the whole point of building it.
+The project was built around the idea of intentionally distorting captured images through layered transformations to create unpredictable visual artifacts.
 
-You take a photo, but before you ever see it, Veil drags it through its own internal process and saves only the altered version.
+Current image processing includes:
 
-The untouched image never survives.
+- warping
+- shear distortion
+- swirl transforms
+- drift fields
+- chromatic shifts
+- haze grading
+- glow extraction
+- blur blending
+- vignette falloff
 
-Every capture gets bent, smeared, shifted, fogged, fractured, and warped in different ways. Sometimes subtly, sometimes hard.
-
-The idea is that if something *was* there, and it wasn’t meant to fully resolve in our space, this is maybe closer to how it would actually show up.
-
-Or maybe it just makes weird images.
-
-Either way, that’s the experiment.
+Each capture applies these effects using randomized parameters and entropy from the ESP32.
 
 ---
 
@@ -40,46 +41,66 @@ Either way, that’s the experiment.
 
 ---
 
-## Using it
+## Use
 
-Press the button.
+Press the hardware button to trigger a capture.
 
-That takes a single capture.
+The image is:
 
-The image gets processed and saved to SD.
+1. captured from the camera  
+2. converted from RGB565 to RGB888  
+3. processed through the Veil pipeline  
+4. compressed to JPEG  
+5. saved to microSD  
 
-Veil hosts its own Wi-Fi archive so you can go back and look through what it’s collected.
+Veil hosts a local Wi-Fi archive for reviewing stored captures.
 
-```text id="veilwifi"
+```text
 SSID: VeilCam
 PASS: veilveilveil
 ```
 
 Open:
 
-```text id="veilip"
+```text
 http://192.168.4.1
 ```
 
-From there you can trigger new captures and browse old ones.
+From the web UI you can:
+
+- trigger captures
+- browse saved images
+- view status
 
 ---
 
 ## Hardware
 
+Current build uses:
+
 - AI Thinker ESP32-CAM  
 - microSD storage  
 - momentary trigger button  
-- status LED  
-- repurposed disposable vape box enclosure  
+- onboard flash LED (GPIO4)  
+- repurposed disposable vape packaging enclosure  
 
-More detailed hardware and wiring docs are in `/docs`.
+More detailed hardware and wiring documentation is in `/docs`.
 
 ---
 
-## Repo structure
+## Technical Notes
 
-```text id="veiltree"
+- Images are captured in RGB565 for direct pixel processing.
+- Final output is encoded as JPEG.
+- Current frame size is QVGA (320x240) for memory stability.
+- GPIO4 shares the flash LED circuit and must remain high-impedance during capture to prevent framebuffer failures.
+- Image filenames are stored sequentially using ESP32 Preferences.
+
+---
+
+## Repo Structure
+
+```text
 Veil/
 ├── README.md
 ├── firmware/
@@ -90,3 +111,9 @@ Veil/
 │   └── SOFTWARE.md
 └── images/
 ```
+
+---
+
+## License
+
+MIT
